@@ -1,0 +1,2 @@
+frozendict>=2.3.4
+git+https://github.com/Tombmyst-Empire/empire-commons.git#egg=empire-commons
