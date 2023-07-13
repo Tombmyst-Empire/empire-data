@@ -59,3 +59,9 @@ confidence = "UNDEFINED"
 
 [tool.pylint.reports]
 output-format = "colorized"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["sun"]
