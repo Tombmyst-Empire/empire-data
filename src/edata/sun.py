@@ -54,7 +54,7 @@ class Sun:
             for a_file in ['manic-2023.txt', 'manic-2024.txt', 'manic-2025.txt', 'manic-2026.txt', 'manic-2027.txt', 'manic-2028.txt']:
                 loading_data: dict[str, SunData] = {}
                 current_year: int = 0
-                with open(a_file, encoding='utf8') as f:
+                with open(f'sun/{a_file}', encoding='utf8') as f:
                     for line_number, line in enumerate(f):
                         if line_number < 2:
                             continue

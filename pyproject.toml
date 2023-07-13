@@ -64,7 +64,7 @@ output-format = "colorized"
 include-package-data = true
 
 [tool.setuptools.packages.find]
-where = ["src", "sun"]
+where = ["src"]
 
 [tool.setuptools.package-data]
-"*" = ["*.txt"]
+"sun" = ["*.txt"]
