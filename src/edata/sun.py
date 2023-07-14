@@ -4,7 +4,7 @@ from time import time
 
 from frozendict import frozendict
 from empire_commons.date_util import Timestamp
-from empire_commons.number_util import to_float
+from empire_commons.number_util import to_float, to_int
 
 
 @dataclass(frozen=True, slots=True)
@@ -60,7 +60,7 @@ class Sun:
                             continue
 
                         split_line: list[str] = line.split(',')
-                        date = datetime.strptime(split_line[0].replace('  ', ' '), '%b %-d %Y')
+                        date = datetime.strptime(split_line[0].replace('  ', ' '), '%b %d %Y')
                         if current_year == 0:
                             current_year = date.year
 
@@ -87,8 +87,11 @@ class Sun:
 
     @staticmethod
     def _hour_to_datetime(date: datetime, time: str) -> datetime:
-        parsed_time: datetime = datetime.strptime('%-H:%M', time)
-        return datetime(date.year, date.month, date.day, parsed_time.hour, parsed_time.minute)
+        return datetime(date.year, date.month, date.day, to_int(time.split(':')[0]), to_int(time.split(':')[1]))
 
 
 Sun.load()
+
+
+if __name__ == '__main__':
+    print(Sun.get_sun_data_from_datetime(datetime.now()))
