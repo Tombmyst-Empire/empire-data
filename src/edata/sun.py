@@ -1,6 +1,8 @@
+import pathlib
 from dataclasses import dataclass
 from datetime import datetime
 from time import time
+from typing import Final
 
 from frozendict import frozendict
 from empire_commons.date_util import Timestamp
@@ -34,6 +36,7 @@ class SunData:
 class Sun:
     _has_run = False
     _data: frozendict[int, frozendict[str, SunData]] | None = None
+    _EDATA_ROOT: Final[str] = str(pathlib.Path(__file__).parent)
 
     @staticmethod
     def get_sun_data_from_datetime(dt: datetime) -> SunData:
@@ -54,7 +57,7 @@ class Sun:
             for a_file in ['manic-2023.txt', 'manic-2024.txt', 'manic-2025.txt', 'manic-2026.txt', 'manic-2027.txt', 'manic-2028.txt']:
                 loading_data: dict[str, SunData] = {}
                 current_year: int = 0
-                with open(f'sun_data/{a_file}', encoding='utf8') as f:
+                with open(f'{Sun._EDATA_ROOT}/sun_data/{a_file}', encoding='utf8') as f:
                     for line_number, line in enumerate(f):
                         if line_number < 2:
                             continue
