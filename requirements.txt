@@ -1,2 +1,1 @@
 frozendict>=2.3.4
-empire_commons@https://github.com/Tombmyst-Empire/empire-commons/archive/refs/heads/master.zip
