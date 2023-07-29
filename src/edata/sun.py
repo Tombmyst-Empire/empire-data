@@ -5,8 +5,7 @@ from time import time
 from typing import Final
 
 from frozendict import frozendict
-from empire_commons.date_util import Timestamp
-from empire_commons.number_util import to_float, to_int
+from edata._internal.commons_frozen import Timestamp, to_float, to_int
 
 
 @dataclass(frozen=True, slots=True)
